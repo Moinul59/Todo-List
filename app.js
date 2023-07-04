@@ -1,22 +1,28 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const mongoURI = process.env.MONGODB_URI;
 require('dotenv').config();
+
 
 const port = process.env.PORT || 3000;
 const app = express();
 
-// Connection to MongoDB
-mongoose.connect(process.env.DATABASE, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// // Connection to MongoDB
+// mongoose.connect(process.env.DATABASE, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 
-// Check MongoDB connection
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", () => {
-  console.log("Connected to MongoDB");
-});
+mongoose
+  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+    // Additional code
+  })
+  .catch((err) => {
+    console.error('Error connecting to MongoDB:', err.message);
+  });
+
 
 
 // middlewares

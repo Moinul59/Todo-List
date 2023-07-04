@@ -6,10 +6,16 @@ const port = process.env.PORT || 3000
 const app = express();
 
 // conenction to mongodb
-mongoose.connect("mongodb://localhost:27017/todo_list", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+const mongoURI = "mongodb://localhost:27017/todo_list";
+
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => {
+    console.log('Connected to MongoDB');
+    // Additional code
+  })
+  .catch((err) => {
+    console.error('Error connecting to MongoDB:', err.message);
+  });
 
 
 // middlewares

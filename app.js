@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000
 const app = express();
 
 // conenction to mongodb
-const mongoURI = "mongodb://localhost/todo_express";
+const mongoURI = "mongodb://localhost:27017/todo_list";
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {

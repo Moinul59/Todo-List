@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const mongoURI = process.env.MONGODB_URI;
 require('dotenv').config();
 
 
@@ -14,7 +13,7 @@ const app = express();
 // });
 
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect("mongodb://localhost:27017", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
     // Additional code

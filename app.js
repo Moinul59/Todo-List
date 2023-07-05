@@ -1,10 +1,11 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require('dotenv').config();
 
 const app = express();
 
 // conenction to mongodb
-mongoose.connect("mongodb://localhost:27017/todo_list", {
+mongoose.connect(process.env.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

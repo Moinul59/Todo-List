@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>To Do List</title>
+    <link rel="stylesheet" type="text/css" href="/css/header.css" />
+    <link rel="stylesheet" type="text/css" href="/css/footer.css" />
+
+    <% if (page==='auth' ) { %>
+    <link rel="stylesheet" href="/css/authentication.css" />
+    <% } %> <% if (page==='todo' ) { %>
+    <link rel="stylesheet" type="text/css" href="/css/list.css" />
+    <% } %>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="brand">
+        <a href="#" style="padding-top: 5vh">To-Do</a>
+      </div>
+      <% if (page==='todo' ){ %>
+      <form action="/signout" method="get">
+        <div>
+          <p><%- userName %></p>
+        </div>
+        <button class="btn" type="submit" style="height: 1.2rem">Logout</button>
+      </form>
+      <% } %>
+    </nav>
+  </body>
+</html>

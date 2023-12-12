@@ -1,10 +1,38 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const TodoSchema = new mongoose.Schema({
-  todo: {
+const taskSchema = new mongoose.Schema({
+  name: {
     type: String,
-    required: true,
+    required: true
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-module.exports = new mongoose.model("Todo", TodoSchema);
+const Task = mongoose.model('Task', taskSchema);
+
+const listSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  tasks: [taskSchema],
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+const List = mongoose.model('List', listSchema);
+
+module.exports = { Task, List };

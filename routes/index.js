@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Task, List } = require('../models/todo');
+const { Task, List } = require('../models/Todo');
 const defaultTasks = require('../models/default-todos');
 const _ = require('lodash');
 const authenticateToken = require('../middlewares/jwt-middleware');
